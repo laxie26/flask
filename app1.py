@@ -16,7 +16,10 @@ def submit():
     # Connect to the SQLite database
     mydb = sqlite3.connect('mydatabase4.db')
     cur = mydb.cursor()
-
+    cur.execute('''CREATE TABLE IF NOT EXISTS customers(
+        name VARCHAR(50),
+        email VARCHAR(35),
+        course VARCHAR(40))''')
     # Insert data into the 'customers' table
     query = "INSERT INTO customers (name, email, course) VALUES (?, ?, ?)"
     cur.execute(query, (name, email, course))
